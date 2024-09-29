@@ -1,37 +1,37 @@
 version: 0.0
-os: linux
+os: ubuntu
 files: 
   - source: /
-    destination: /home/ubuntu/blogprojectdrf
+    destination: /home/ubuntu/AWS_CodePipeline
 permissions:
-  - object: /home/ubuntu/blogprojectdrf
-    owner: ubuntu
-    group: ubuntu
+  - object: /home/ubuntu/AWS_CodePipeline
+    owner: root
+    group: root
 hooks:
   BeforeInstall:
       - location: scripts/clean_instance.sh
         timeout: 300
-        runas: ubuntu
+        runas: root
   AfterInstall:
       - location: scripts/instance_os_dependencies.sh
         timeout: 300
-        runas: ubuntu
+        runas: root
       - location: scripts/python_dependencies.sh
         timeout: 300
-        runas: ubuntu
+        runas: root
       - location: scripts/gunicorn.sh
         timeout: 300
-        runas: ubuntu
+        runas: root
       - location: scripts/nginx.sh
         timeout: 300
-        runas: ubuntu
+        runas: root
   ApplicationStop:
       - location: scripts/stop_app.sh
         timeout: 300
-        runas: ubuntu
+        runas: root
   ApplicationStart:
       - location: scripts/start_app.sh
         timeout: 300
-        runas: ubuntu
+        runas: root
   
   

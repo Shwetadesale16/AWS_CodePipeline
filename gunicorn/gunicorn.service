@@ -4,10 +4,10 @@ Requires=gunicorn.socket
 After=network.target
 
 [Service]
-User=ubuntu
+User=root
 Group=www-data
-WorkingDirectory=/home/ubuntu/financetracker
-ExecStart=/home/ubuntu/financetracker/venv/bin/gunicorn \
+WorkingDirectory=/home/ubuntu/AWS_CodePipeline
+ExecStart=/home/ubuntu/AWS_CodePipeline/venv/bin/gunicorn \
           --access-logfile - \
           --workers 3 \
           --bind unix:/run/gunicorn.sock \
